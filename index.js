@@ -2,7 +2,7 @@ const express = require('express');
 
 const app = express();
 
-const port = 3000;
+const port =  process.env.PORT || 5000;
 
 //Idiomatic expression in express to route and respond to a client request
 app.get('/', (req, res) => {        //get requests to the root ("/") will route here
