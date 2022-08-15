@@ -25,3 +25,5 @@ Airtable.configure({
     apiKey: 'key8EGyjgLsDAH3Qt'
 });
 var base = Airtable.base('appYCmV6o07hjijQn');
+
+console.log(base);
