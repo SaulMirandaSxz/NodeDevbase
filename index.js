@@ -5,12 +5,11 @@ const app = express();
 
 const port =  process.env.PORT || 5000;
 
-app.arguments(express.json());
 
-app.post('/api/', (req, res) => {
-    const id = req.params.id;
-    const body = req.body;
-    
+app.get('/api/', (req, res) => {
+    res.status(200).send({
+        message: 'Welcome to the Devbase API Service'',
+    })
 });
 
 
