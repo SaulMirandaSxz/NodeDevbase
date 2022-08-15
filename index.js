@@ -13,3 +13,15 @@ app.get('/', (req, res) => {        //get requests to the root ("/") will route 
 app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${port}`); 
 });
+
+
+
+
+const base = require('airtable').base('appYCmV6o07hjijQn');
+
+var Airtable = require('airtable');
+Airtable.configure({
+    endpointUrl: 'https://api.airtable.com',
+    apiKey: 'key8EGyjgLsDAH3Qt'
+});
+var base = Airtable.base('appYCmV6o07hjijQn');
