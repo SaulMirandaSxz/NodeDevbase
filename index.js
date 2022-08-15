@@ -8,7 +8,7 @@ const port =  process.env.PORT || 5000;
 
 app.get('/api/', (req, res) => {
     res.status(200).send({
-        message: 'Welcome to the Devbase API Service'',
+        message: 'Welcome to the Devbase API Service',
     })
 });
 
