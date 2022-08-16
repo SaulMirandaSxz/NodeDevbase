@@ -5,6 +5,23 @@ const app = express();
 
 const port =  process.env.PORT || 5000;
 
+const axios = require('axios');
+
+const data = JSON.stringify({
+    name: "airtable",
+});
+
+const options = {
+    hostname: "localhost:5000",
+    path: '/api/airtable',
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    }
+};
+
+
+
 
 app.get('/api/', (req, res) => {
     res.status(200).send({
@@ -26,3 +43,11 @@ app.get('/', (req, res) => {        //get requests to the root ("/") will route 
 app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${port}`); 
 });
+
+
+axios.post("https://localhost:5000/api/airtable", data).then(res => {
+    console.log('Status Code : ${res.status}');
+    conselog.log('Body : ${JSON.stringify(res.data)}');
+}).catch(err => {
+    console.log(err);
+})
