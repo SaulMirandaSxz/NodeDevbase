@@ -1,1 +1,1 @@
---port=$PORT
+worker: node app.js --port=$PORT
