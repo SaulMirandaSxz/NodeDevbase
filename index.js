@@ -12,6 +12,7 @@ var JsonParser = bodyParser.json();
 // Create application/x-www-form-urlencoded parser
 var UrlEncodedParser = bodyParser.urlencoded({ extended: false });
 
+const host = `0.0.0.0`;
 const port =  process.env.PORT || 5000;
 
 
@@ -55,7 +56,7 @@ app.get('/',  (req, res) => {        //get requests to the root ("/") will route
                                                         //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
 });
 
-app.listen(port, () => {            //server starts listening for any attempts from a client to connect at port: {port}
+app.listen(port, host, function () {            //server starts listening for any attempts from a client to connect at port: {port}
     console.log(`Now listening on port ${port}`); 
 });
 
