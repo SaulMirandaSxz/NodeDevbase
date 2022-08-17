@@ -1,24 +1,32 @@
-const bodyParser = require('body-parser');
+const express = require('express')
 
-const express = require('express');
+const bodyParser = require('body-parser')
 
 const app = express();
+
+// Create appliation/json parser
+var JsonParser = bodyParser.json();
+
+// Create application/x-www-form-urlencoded parser
+var UrlEncodedParser = bodyParser.urlencoded({ extended: false });
 
 const port =  process.env.PORT || 5000;
 
 const axios = require('axios').default;
+
 
 const data = JSON.stringify({
     name: "airtable",
 });
 
 const expenses = [
-    { id: 1, name: "string", amount: 1500, file: "string.jpg" },
-    { id: 2, name: "string1", amount: 1500, file: "string1.jpg"} ];
+    { name: "string", amount: 1500, file: "string.jpg" },
+    { name: "string1", amount: 1500, file: "string1.jpg"} ];
 
 app.use(express.json());
 
-app.use(bodyParser.urlencoded({ extended: false }));
+
+
 
 
 app.get('/', (req, res) => {
@@ -33,13 +41,13 @@ app.get('/api/expenses', (req, res) => {
 });
 
 
-app.post('/api/expenses', (req, res) => {
+app.post('/api/expenses', JsonParser, function (req, res) {
     const expense = {
-        id: expenses.lenght + 1,
         name: req.body.name,
         amount: parseInt(req.body.amount),
         file: req.body.file,
     }
+    
     expenses.push(expense);
     res.send(expense);
 });
