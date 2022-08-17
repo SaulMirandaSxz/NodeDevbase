@@ -1,8 +1,8 @@
-POST http://localhost:5000/api/expenses HTTP/1.1
+GET  http://localhost:5000/api/expenses HTTP/1.1
 content-type: application/json
 
   {
-    "name": "string4",
-    "amount": 1900,
+    "name": "string9768",
+    "amount": 1922200,
     "file": "string2.jpg"
   }
