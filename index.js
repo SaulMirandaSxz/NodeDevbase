@@ -12,8 +12,10 @@ var JsonParser = bodyParser.json();
 // Create application/x-www-form-urlencoded parser
 var UrlEncodedParser = bodyParser.urlencoded({ extended: false });
 
-const host = `0.0.0.0`;
+
 const port =  process.env.PORT || 5000;
+
+
 
 
 
@@ -50,16 +52,10 @@ app.post('/api/expenses', JsonParser, function (req, res) {
 
 
 
-//Idiomatic expression in express to route and respond to a client request
-app.get('/',  (req, res) => {        //get requests to the root ("/") will route here
-    res.sendFile('index.html', {root: __dirname});      //server responds by sending the index.html file to the client's browser
-                                                        //the .sendFile method needs the absolute path to the file, see: https://expressjs.com/en/4x/api.html#res.sendFile 
-});
 
-app.listen(port, host, function () {            //server starts listening for any attempts from a client to connect at port: {port}
-    console.log(`Now listening on port ${port}`); 
-});
-
-
+var http = require('http'); 
+ http.createServer(function (_req, res) {     
+    res.writeHead(200, {'Content-Type': 'text/plain'});     
+    res.send('it is running\n'); }).listen(process.env.PORT || 5000);
 
 
