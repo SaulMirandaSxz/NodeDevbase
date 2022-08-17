@@ -12,7 +12,7 @@ var JsonParser = bodyParser.json();
 // Create application/x-www-form-urlencoded parser
 var UrlEncodedParser = bodyParser.urlencoded({ extended: false });
 
-
+const host = '0.0.0.0';
 const port =  process.env.PORT || 5000;
 
 
@@ -52,7 +52,6 @@ app.post('/api/expenses', JsonParser, function (req, res) {
 
 
 
-//Idiomatic expression in express to route and respond to a client request
 
 
 app.listen(port, host, function () {            //server starts listening for any attempts from a client to connect at port: {port}
