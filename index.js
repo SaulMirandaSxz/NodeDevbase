@@ -12,7 +12,7 @@ var JsonParser = bodyParser.json();
 // Create application/x-www-form-urlencoded parser
 var UrlEncodedParser = bodyParser.urlencoded({ extended: false });
 
-const host = 'https://devbase-node.herokuapp.com/';
+const host = '0.0.0.0';
 const port =  process.env.PORT || 5000;
 
 
