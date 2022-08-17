@@ -1,3 +1,4 @@
+const bodyParser = require('body-parser');
 
 const express = require('express');
 
@@ -11,32 +12,37 @@ const data = JSON.stringify({
     name: "airtable",
 });
 
+const expenses = [
+    { id: 1, name: "string", amount: 1500, file: "string.jpg" },
+    { id: 2, name: "string1", amount: 1500, file: "string1.jpg"} ];
+
+app.use(express.json());
+
+app.use(bodyParser.urlencoded({ extended: false }));
 
 
-axios.post("https://devbase-node.herokuapp.com/api/airtable", data).then(res => {
-    console.log(`Status Code : ${res.status}`);
-    console.log(`Body : ${JSON.stringify(res.data)}`);
-}).catch(err => {
-    console.log(err);
-})
-
-
-app.get('/api/', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).send({
         message: 'Welcome to the Devbase API Service',
     })
 });
 
 
-const options = {
-    hostname: "localhost",
-    port: port,
-    path: '/api/airtable',
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
+app.get('/api/expenses', (req, res) => {
+    res.send(expenses);
+});
+
+
+app.post('/api/expenses', (req, res) => {
+    const expense = {
+        id: expenses.lenght + 1,
+        name: req.body.name,
+        amount: parseInt(req.body.amount),
+        file: req.body.file,
     }
-};
+    expenses.push(expense);
+    res.send(expense);
+});
 
 
 
