@@ -4,8 +4,6 @@ const bodyParser = require('body-parser')
 
 const app = express();
 
-const axios = require('axios').default;
-
 // Create appliation/json parser
 var JsonParser = bodyParser.json();
 
@@ -26,13 +24,6 @@ app.use(bodyParser.json())
 
 app.set('port', (process.env.PORT || 5000));
 
-//For avoidong Heroku $PORT error
-app.get('/', function(request, response) {
-    var result = 'App is running'
-    response.send(result);
-}).listen(app.get('port'), function() {
-    console.log('App is running, server is listening on port ', app.get('port'));
-});
 
 
 
@@ -64,3 +55,10 @@ app.post('/api/expenses', JsonParser, function (req, res) {
 
 
 
+//For avoidong Heroku $PORT error
+app.get('/', function(_request, response) {
+    var result = 'App is running'
+    response.send(result);
+}).listen(app.get('port'), function() {
+    console.log('App is running, server is listening on port ', app.get('port'));
+});
